@@ -1,0 +1,37 @@
+# Run command: docker-compose -f docker-compose.dev.yml up -d
+# Stop command: docker-compose -f docker-compose.dev.yml stop
+# Destroy command: docker-compose -f docker-compose.dev.yml down -v
+
+services:
+  postgres:
+    container_name: pgsql-ctn
+    image: postgres
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-demo}
+      POSTGRES_USER: ${DATABASE_USER:-postgres}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+    volumes:
+      - pgsql-data:/var/lib/postgresql/data
+    ports:
+        - "5432:5432"
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin-ctn
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-tranphuquy19@gmail.com}
+      PGADMIN_DEFAULT_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+      PGADMIN_CONFIG_SERVER_MODE: 'True'
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json
+    ports:
+        - "5433:80"
+    restart: unless-stopped
+
+volumes:
+    pgsql-data:
+    pgadmin-data:
