@@ -1,4 +1,4 @@
-package com.example.demo.modules.user.controller;
+package com.example.demo.modules.user.controllers;
 
 import com.example.demo.modules.user.entities.UserEntity;
 import com.example.demo.modules.user.services.UserService;
