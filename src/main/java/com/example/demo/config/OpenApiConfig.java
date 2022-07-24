@@ -15,8 +15,8 @@ import org.springframework.context.annotation.Configuration;
                 contact = @Contact(name = "Quy P. TRAN", email = "tranphuquy19@gmail.com")
         ),
         servers = {
-                @Server(url = "http://localhost:8080/api", description = "Local server"),
-                @Server(url = "https://example.com/api", description = "Prod server")
+                @Server(url = "http://localhost:8080", description = "Local server"),
+                @Server(url = "https://demo.example.com", description = "Prod server")
         }
 )
 public class OpenApiConfig {

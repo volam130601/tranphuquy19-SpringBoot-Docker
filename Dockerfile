@@ -18,7 +18,7 @@ COPY src src
 RUN ./mvnw install -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
-FROM openjdk:11-jdk-buster
+FROM openjdk:11-jre-buster
 VOLUME /tmp
 EXPOSE 8080
 ARG DEPENDENCY=/workspace/app/target/dependency
