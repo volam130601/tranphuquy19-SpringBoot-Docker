@@ -1,6 +1,13 @@
 # Spring boot - Docker Multi-Stage build
 
+- [What is a multi-stage build?](https://vsupalov.com/docker-multi-stage-advantages/)
+- [Official documentation](https://spring.io/guides/topicals/spring-boot-docker/)
 
+_Note: To reduce build time please enable DOCKER_BUILDKIT=1_
+
+```bash
+export DOCKER_BUILDKIT=1 # enable Docker buildkit (for Linux)
+```
 
 ## Usage
 
@@ -45,7 +52,7 @@ Notice: Please modify the connection string in application.properties file (from
 
 ```bash
 docker-compose -f docker-compose.dev.yml up -d
-# This command will start postgres and pgadmin4 with the ports exposed
+# This command will start postgres and pgadmin4 with the ports exposed on host machine
 ```
 
 ### Using docker CLI
